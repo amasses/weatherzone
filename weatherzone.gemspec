@@ -19,8 +19,9 @@ Gem::Specification.new do |s|
   
   s.add_development_dependency("rake")
   s.add_development_dependency("mocha")
+  s.add_development_dependency("timecop")
   
-  s.add_dependency("nokogiri")
-  s.add_dependency("sax-machine")
-  s.add_dependency("tzinfo")
+  s.add_dependency("nokogiri", "~> 1.5.0")
+  s.add_dependency("sax-machine", "~> 0.0.20")
+  s.add_dependency("tzinfo", "~> 0.3.29")
 end

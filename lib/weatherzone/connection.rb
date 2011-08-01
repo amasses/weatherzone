@@ -1,5 +1,6 @@
 require 'singleton'
 require 'open-uri' 
+require 'digest/md5'
 
 module Weatherzone  
   
@@ -40,13 +41,9 @@ module Weatherzone
     def settings
       self.class.settings
     end
-  
-    def key
-      instance_eval &@keygen
-    end
     
     def base_url
-      @base_url ||= "#{self.url}?u=#{username}&k=#{key}"
+      @base_url ||= "#{self.url}?u=#{username}&k=#{password_hash}"
     end
     
     def wz_url_for(params)
@@ -74,6 +71,15 @@ module Weatherzone
 
     def error(message)
       @logger.error("[weatherzone] [ERROR] #{message}") if @logger
+    end
+    
+    def generate_key
+      date = Date.today
+      key = (date.day * 2) + (date.month * 300) + ((date.year - 2000) * 170000)
+    end
+    
+    def password_hash
+      Digest::MD5.hexdigest(generate_key.to_s + self.password)
     end
    
   end
