@@ -19,7 +19,3 @@ require 'weatherzone/resource'
 require 'weatherzone/helpers/almanac_element'
 require 'weatherzone/helpers/date_parser'
 require 'weatherzone/helpers/units'
-
-module Weatherzone
-  VERSION = '0.8.5'
-end
