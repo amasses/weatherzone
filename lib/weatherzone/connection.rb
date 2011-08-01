@@ -21,15 +21,14 @@ module Weatherzone
 
     DEFAULT_TIMEOUT_AFTER = 5
     DEFAULT_URL = "http://webservice.theweather.com.au/ws1/wx.php"
-    attr_accessor :username, :password, :url, :keygen, :logger, :timeout_after
+    attr_accessor :username, :password, :url, :logger, :timeout_after
     
-    def initialize(username=nil, password=nil, keygen=nil, options={})
+    def initialize(username=nil, password=nil, options={})
       @logger        = Logger.new(STDOUT)
       @logger.level  = Logger::DEBUG
       @username      = username
       @password      = password
       @url           = options[:url] || DEFAULT_URL
-      @keygen        = keygen
       @logger        = options[:logger]
       @timeout_after = options[:timeout_after] || options[:timeout] || DEFAULT_TIMEOUT_AFTER
     end
