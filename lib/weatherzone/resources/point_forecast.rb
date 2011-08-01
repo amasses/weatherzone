@@ -1,5 +1,5 @@
 class PointForecast < Weatherzone::Resource
-  attributes :time
+  attribute :time
   has_elements :dp_c, :rh, :wind_dir_degrees, :wind_dir_compass, :wind_speed_kph
   has_attribute :units, :on_elements => [:dp_c, :rh, :wind_dir_degrees, :wind_speed_kph]
 

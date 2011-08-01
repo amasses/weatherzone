@@ -1,4 +1,4 @@
 class StateForecast < Weatherzone::Resource
-  attributes :period
+  attribute :period
   has_elements :period_name, :precis
 end

@@ -1,5 +1,8 @@
 class Location < Weatherzone::Resource  
-  attributes :type, :code, :name, :state
+  attribute :type
+  attribute :code
+  attribute :name
+  attribute :state
 
   has_elements :lat, :long, :elevation
   has_attribute :units, :on_elements => [:lat, :long, :elevation]

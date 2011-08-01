@@ -1,5 +1,8 @@
 class Almanac < Weatherzone::Resource  
-  attributes :month_num, :month_name, :date_start, :date_end
+  attribute :month_num
+  attribute :month_name
+  attribute :date_start
+  attribute :date_end
 
   elements :almanac_period, :as => :almanac_periods, :class => AlmanacPeriod
   

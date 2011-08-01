@@ -2,7 +2,8 @@ class Warning < Weatherzone::Resource
   
   include Weatherzone::Helpers::DateParser
   
-  attributes :id, :type
+  attribute :id
+  attribute :type
   has_elements :issue_day_name, :issue_time_local, :expire_time_local, :short_text, :long_text, :url
 
   interpret_as_time :issue_time_local, :expire_time_local

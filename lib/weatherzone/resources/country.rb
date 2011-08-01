@@ -1,4 +1,5 @@
 class Country < Weatherzone::Resource
-  attributes :code, :name
+  attribute :code
+  attribute :name
   elements :location, :as => :locations, :class => Location
 end

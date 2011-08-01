@@ -1,5 +1,5 @@
 class MoonPhase < Weatherzone::Resource
-  attributes :day
+  attribute :day
   has_elements :day_name, :date, :moon_phase
   has_attribute :phase_num, :on_elements => :moon_phase
   has_attribute :phase_text, :on_elements => :moon_phase

@@ -1,6 +1,10 @@
 class AlmanacPeriod < Weatherzone::Resource  
 
-  attributes :code, :title, :month_name, :from, :to
+  attribute :code
+  attribute :title
+  attribute :month_name
+  attribute :from
+  attribute :to
 
   include Weatherzone::Helpers::AlmanacElement
   include Weatherzone::Helpers::DateParser

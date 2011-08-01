@@ -1,3 +1,6 @@
 class Lift < Weatherzone::Resource
-  attributes :time, :tz, :name, :status
+  attribute :time
+  attribute :tz
+  attribute :name
+  attribute :status
 end

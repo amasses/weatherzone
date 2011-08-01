@@ -2,7 +2,8 @@ class NewsItem < Weatherzone::Resource
 
   include Weatherzone::Helpers::DateParser
   
-  attributes :item_num, :source
+  attribute :item_num
+  attribute :source
   has_elements :link, :title, :byline, :dateline, :creditline, :copyright, :text
   has_attribute :type, :on_elements => :link
   has_attribute :description, :on_elements => :link
