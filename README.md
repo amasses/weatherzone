@@ -1,12 +1,15 @@
-= weatherzone
+weatherzone
+===========
 
 http://github.com/benaskins/weatherzone/
 
-== DESCRIPTION:
+DESCRIPTION
+-----------
 
 Ruby client for the weatherzone webservice.
 
-== How to use
+How to use
+----------
 
 In order to use this gem you will require credentials for the Weatherzone 
 Web Service: http://business.weatherzone.com.au
@@ -25,7 +28,8 @@ Once this is done you can then query against the web service:
 
     @location = Weather.find_by_location_name(WEATHERZONE, "Sydney")
 
-== LICENSE:
+LICENSE
+-------
 
 Copyright (c) 2008 FIX
 
