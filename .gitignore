@@ -1,3 +1,4 @@
 pkg/*
 *.tmproj
-.wzkey.rbGemfile.lock
+.wzkey.rb
+Gemfile.lock
