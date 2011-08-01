@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Weatherzone::VERSION
   s.authors     = ["Ben Askins"]
   s.email       = ["ben.askins@gmail.com"]
-  s.homepage    = "weatherzone.com.au"
+  s.homepage    = "http://www.weatherzone.com.au"
   s.summary     = %q{Abstracts the API calls to the WeatherZone web service}
 
   s.rubyforge_project = "weatherzone"
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("mocha")
   s.add_development_dependency("timecop")
   
-  s.add_dependency("nokogiri", "~> 1.5.0")
+  s.add_dependency("nokogiri", "~> 1.5")
   s.add_dependency("sax-machine", "~> 0.0.20")
-  s.add_dependency("tzinfo", "~> 0.3.29")
+  s.add_dependency("tzinfo", "~> 0.3")
 end
