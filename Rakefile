@@ -1,7 +1,11 @@
-require 'rubygems'
-require 'hoe'
-require './lib/weatherzone.rb'
+require 'bundler/gem_tasks'
+require 'rake/testtask'
 
-Hoe.new('weatherzone', Weatherzone::VERSION) do |p|
-  p.developer('Ben Askins', 'ben.askins@gmail.com')
+task :default => ["test:units"]
+
+desc "Run basic tests"
+Rake::TestTask.new("test:units") do |t|
+  t.pattern = 'test/test_*.rb'
+  t.verbose = true
+  t.warning = true
 end

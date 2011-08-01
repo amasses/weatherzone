@@ -2,7 +2,6 @@ require 'test/unit'
 require 'rubygems'
 require 'mocha'
 require 'logger'
-require 'ruby-debug'
 
 require File.dirname(__FILE__) + '/../../lib/weatherzone'
 
