@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class TestExceptions < Test::Unit::TestCase
+class TestExceptions < Test::Unit::TestCase  
   def setup
-    @connection = Weatherzone::Connection.new("username", "password", nil, :timeout_after => 10)
+    @connection = Weatherzone::Connection.new("username", "password", :timeout_after => 10)
   end
   
   def test_request_failed_should_capture_original_exception
@@ -16,7 +16,6 @@ class TestExceptions < Test::Unit::TestCase
     mock_uri.expects(:read).raises(Timeout::Error)
     URI.stubs(:parse).returns(mock_uri)
     
-    @connection.timeout_after = 0.1
     assert_raises Weatherzone::RequestFailed do
       Weather.find_by_location_name(@connection, "Sydney")
     end
