@@ -6,6 +6,25 @@ http://github.com/benaskins/weatherzone/
 
 Ruby client for the weatherzone webservice.
 
+== How to use
+
+In order to use this gem you will require credentials for the Weatherzone 
+Web Service: http://business.weatherzone.com.au
+
+First, setup your connection - this can be done in an initializer if you are using this gem
+within a Rails application:
+
+    require 'logger'
+    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Logger.new(STDOUT))
+
+or
+
+    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Rails.logger)
+
+Once this is done you can then query against the web service:
+
+    @location = Weather.find_by_location_name(WEATHERZONE, "Sydney")
+
 == LICENSE:
 
 Copyright (c) 2008 FIX
