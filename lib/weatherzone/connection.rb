@@ -1,6 +1,7 @@
 require 'singleton'
 require 'open-uri' 
 require 'digest/md5'
+require 'logger'
 
 module Weatherzone  
   
@@ -20,7 +21,7 @@ module Weatherzone
   class Connection
 
     DEFAULT_TIMEOUT_AFTER = 5
-    DEFAULT_URL = "http://webservice.theweather.com.au/ws1/wx.php"
+    DEFAULT_URL = "http://ws1.theweather.com.au/"
     DEFAULT_KEYGEN = Proc.new { raise "Please provide a key generation Proc" }
     attr_accessor :username, :password, :url, :logger, :timeout_after, :keygen
     
@@ -30,7 +31,7 @@ module Weatherzone
       @username      = username
       @password      = password
       @url           = options[:url] || DEFAULT_URL
-      @logger        = options[:logger]
+      @logger        = options[:logger] || get_logger
       @timeout_after = options[:timeout_after] || options[:timeout] || DEFAULT_TIMEOUT_AFTER
       @keygen        = options[:keygen] || DEFAULT_KEYGEN
     end
@@ -82,5 +83,12 @@ module Weatherzone
       Digest::MD5.hexdigest(generate_key.to_s + self.password)
     end
    
+    def get_logger
+      if const_defined?("Rails")
+        Rails.logger
+      else
+        Logger.new(STDOUT)
+      end
+    end
   end
 end
