@@ -3,7 +3,8 @@ require File.dirname(__FILE__) + '/test_helper.rb'
 class TestConnection < Test::Unit::TestCase
 
   def setup    
-    @connection = Weatherzone::Connection.new("username", "password", :url => "http://ws1.theweather.com.au/")
+    keygen = Proc.new { 12345 }
+    @connection = Weatherzone::Connection.new("username", "password", :keygen => keygen)
   end
 
   def test_should_set_username
@@ -15,11 +16,9 @@ class TestConnection < Test::Unit::TestCase
   end
 
   def test_should_provide_base_url
-    Timecop.freeze(Time.utc(2011, 01, 01)) do
-      key = 1870302 # On 20110101 the key should be this value
-      hash = Digest::MD5.hexdigest "#{key}password"
-      assert_equal "http://ws1.theweather.com.au/?u=username&k=#{hash}", @connection.base_url
-    end
+    key = 12345 # On 20110101 the key should be this value
+    hash = Digest::MD5.hexdigest "#{key}password"
+    assert_equal "http://webservice.theweather.com.au/ws1/wx.php?u=username&k=#{hash}", @connection.base_url
   end
   
 end

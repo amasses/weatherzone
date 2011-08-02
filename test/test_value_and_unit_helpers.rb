@@ -6,7 +6,7 @@ class TestValueAndUnitHelpers < Test::Unit::TestCase
   def setup
     super
     @connection.stubs(:request).returns( File.open("test/response/everything.xml") )
-    weather     = Weather.find_by_location_code(@connection, "9770")
+    weather     = Weatherzone::Weather.find_by_location_code(@connection, "9770")
     country     = weather.countries.first
     location    = country.locations.first
     @forecast   = location.forecasts.first

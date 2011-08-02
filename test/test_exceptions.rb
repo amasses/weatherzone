@@ -2,7 +2,8 @@ require File.dirname(__FILE__) + '/test_helper.rb'
 
 class TestExceptions < Test::Unit::TestCase  
   def setup
-    @connection = Weatherzone::Connection.new("username", "password", :timeout_after => 10)
+    keygen = Proc.new { 12345 }
+    @connection = Weatherzone::Connection.new("username", "password", :timeout_after => 10, :keygen => keygen)
   end
   
   def test_request_failed_should_capture_original_exception
@@ -17,7 +18,7 @@ class TestExceptions < Test::Unit::TestCase
     URI.stubs(:parse).returns(mock_uri)
     
     assert_raises Weatherzone::RequestFailed do
-      Weather.find_by_location_name(@connection, "Sydney")
+      Weatherzone::Weather.find_by_location_name(@connection, "Sydney")
     end
   end
     

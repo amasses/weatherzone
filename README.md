@@ -14,15 +14,21 @@ How to use
 In order to use this gem you will require credentials for the Weatherzone 
 Web Service: http://business.weatherzone.com.au
 
+You will need to create a proc or lambda which will generate the key used in the authentication
+process - for details on the algorithm required you will need to consult the documentation
+provided to weatherzone clients. An example is as follows:
+
+    keygen = Proc.new { (1 + 2 + 3 * 1000) } # Apply the weatherzone specific algorithm in here
+
 First, setup your connection - this can be done in an initializer if you are using this gem
 within a Rails application:
 
     require 'logger'
-    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Logger.new(STDOUT))
+    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Logger.new(STDOUT), :keygen => keygen)
 
 or
 
-    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Rails.logger)
+    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Rails.logger, :keygen => keygen)
 
 Once this is done you can then query against the web service:
 

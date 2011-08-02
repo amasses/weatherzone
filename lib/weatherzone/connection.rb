@@ -21,7 +21,8 @@ module Weatherzone
 
     DEFAULT_TIMEOUT_AFTER = 5
     DEFAULT_URL = "http://webservice.theweather.com.au/ws1/wx.php"
-    attr_accessor :username, :password, :url, :logger, :timeout_after
+    DEFAULT_KEYGEN = Proc.new { raise "Please provide a key generation Proc" }
+    attr_accessor :username, :password, :url, :logger, :timeout_after, :keygen
     
     def initialize(username=nil, password=nil, options={})
       @logger        = Logger.new(STDOUT)
@@ -31,6 +32,7 @@ module Weatherzone
       @url           = options[:url] || DEFAULT_URL
       @logger        = options[:logger]
       @timeout_after = options[:timeout_after] || options[:timeout] || DEFAULT_TIMEOUT_AFTER
+      @keygen        = options[:keygen] || DEFAULT_KEYGEN
     end
     
     def self.settings
@@ -73,8 +75,7 @@ module Weatherzone
     end
     
     def generate_key
-      date = Date.today
-      key = (date.day * 2) + (date.month * 300) + ((date.year - 2000) * 170000)
+      keygen.call
     end
     
     def password_hash

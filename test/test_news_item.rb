@@ -5,13 +5,13 @@ class TestNewsItem < Test::Unit::TestCase
   def setup
     super
     @connection.stubs(:request).returns( File.open("test/response/news.xml") )
-    weather = Weather.find_by_location_code(@connection, "9770")
+    weather = Weatherzone::Weather.find_by_location_code(@connection, "9770")
     @news_items = weather.news_items
     @news_item = @news_items.first
   end
   
   def test_should_be_a_news_item
-    assert_kind_of NewsItem, @news_item
+    assert_kind_of Weatherzone::NewsItem, @news_item
   end
 
   def test_should_not_have_nil_attributes
