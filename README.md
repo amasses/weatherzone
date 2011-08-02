@@ -24,11 +24,11 @@ First, setup your connection - this can be done in an initializer if you are usi
 within a Rails application:
 
     require 'logger'
-    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Logger.new(STDOUT), :keygen => keygen)
+    WEATHERZONE = Weatherzone::Connection.new("username", "password", :keygen => keygen)
 
 or
 
-    WEATHERZONE = Weatherzone::Connection.new("username", "password", :logger => Rails.logger, :keygen => keygen)
+    WEATHERZONE = Weatherzone::Connection.new("username", "password", :keygen => keygen)
 
 Once this is done you can then query against the web service:
 
