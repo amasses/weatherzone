@@ -84,7 +84,7 @@ module Weatherzone
     end
    
     def get_logger
-      if const_defined?("Rails")
+      if Object.const_defined?("Rails")
         Rails.logger
       else
         Logger.new(STDOUT)

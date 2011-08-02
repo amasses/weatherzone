@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/test_helper.rb'
 class TestExceptions < Test::Unit::TestCase  
   def setup
     keygen = Proc.new { 12345 }
-    @connection = Weatherzone::Connection.new("username", "password", :timeout_after => 10, :keygen => keygen)
+    @connection = Weatherzone::Connection.new("username", "password", :timeout_after => 10, :keygen => keygen, :logger => Logger.new(nil))
   end
   
   def test_request_failed_should_capture_original_exception
