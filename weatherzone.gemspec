@@ -24,4 +24,6 @@ Gem::Specification.new do |s|
   s.add_dependency("nokogiri", "~> 1.5")
   s.add_dependency("sax-machine", "0.0.20")
   s.add_dependency("tzinfo", "~> 0.3")
+  s.add_dependency("activesupport", "~> 3.1")
+  s.add_dependency("i18n")
 end

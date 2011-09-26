@@ -9,11 +9,7 @@ require 'nokogiri'
 require 'sax-machine'
 require 'tzinfo'
 
-unless defined?(ActiveSupport)
-  require 'ext/class'
-  require 'ext/object'
-end
-
+require 'active_support/core_ext'
 require 'weatherzone/finder'
 require 'weatherzone/resource'
 require 'weatherzone/helpers/almanac_element'
